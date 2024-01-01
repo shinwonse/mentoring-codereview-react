@@ -1588,7 +1588,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.16.3, @babel/runtime@npm:^7.23.2, @babel/runtime@npm:^7.8.4":
+"@babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.16.3, @babel/runtime@npm:^7.23.2, @babel/runtime@npm:^7.23.5, @babel/runtime@npm:^7.8.4":
   version: 7.23.7
   resolution: "@babel/runtime@npm:7.23.7"
   dependencies:
@@ -4487,6 +4487,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"clsx@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "clsx@npm:2.1.0"
+  checksum: c09c00ad14f638366ca814097e6cab533dfa1972a358da5b557be487168acbb25b4c1395e89ffa842a8a61ba87a462d2b4885bc9d4f8410b598f3cb339599cdb
+  languageName: node
+  linkType: hard
+
 "co@npm:^4.6.0":
   version: 4.6.0
   resolution: "co@npm:4.6.0"
@@ -6045,6 +6052,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-plugin-tailwindcss@npm:^3.13.1":
+  version: 3.13.1
+  resolution: "eslint-plugin-tailwindcss@npm:3.13.1"
+  dependencies:
+    fast-glob: "npm:^3.2.5"
+    postcss: "npm:^8.4.4"
+  peerDependencies:
+    tailwindcss: ^3.3.2
+  checksum: 44964d3eba8d8d9cd4f918f0777b3be294b34e000658abe0d3552aa646215655417c89f4733964b45f2073fb10c546e544101b288363163fca1bab7d3a3c3aca
+  languageName: node
+  linkType: hard
+
 "eslint-plugin-testing-library@npm:^5.0.1":
   version: 5.11.1
   resolution: "eslint-plugin-testing-library@npm:5.11.1"
@@ -6381,7 +6400,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-glob@npm:^3.2.9, fast-glob@npm:^3.3.0, fast-glob@npm:^3.3.1":
+"fast-glob@npm:^3.2.5, fast-glob@npm:^3.2.9, fast-glob@npm:^3.3.0, fast-glob@npm:^3.3.1":
   version: 3.3.2
   resolution: "fast-glob@npm:3.3.2"
   dependencies:
@@ -9014,6 +9033,7 @@ __metadata:
     "@types/react-dom": "npm:^18.2.18"
     "@typescript-eslint/eslint-plugin": "npm:^5.59.5"
     "@typescript-eslint/parser": "npm:^5.59.5"
+    clsx: "npm:^2.1.0"
     craco-alias: "npm:^3.0.1"
     eslint: "npm:^8.40.0"
     eslint-config-airbnb: "npm:^19.0.4"
@@ -9027,12 +9047,15 @@ __metadata:
     eslint-plugin-simple-import-sort: "npm:^10.0.0"
     eslint-plugin-sort-destructure-keys: "npm:^1.5.0"
     eslint-plugin-sort-keys-fix: "npm:^1.1.2"
+    eslint-plugin-tailwindcss: "npm:^3.13.1"
     eslint-plugin-typescript-sort-keys: "npm:^2.3.0"
     prettier: "npm:^2.8.8"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
     react-router-dom: "npm:^6.21.0"
     react-scripts: "npm:5.0.1"
+    tailwind-merge: "npm:^2.2.0"
+    tailwindcss: "npm:^3.4.0"
     typescript: "npm:^4.9.5"
     web-vitals: "npm:^2.1.4"
   languageName: unknown
@@ -12399,7 +12422,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:^3.0.2":
+"tailwind-merge@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "tailwind-merge@npm:2.2.0"
+  dependencies:
+    "@babel/runtime": "npm:^7.23.5"
+  checksum: 41476d686af101c770401f4db509ffea9ec13bf99fd18185903dd86df2b71b3f512d9373b0f2785cb9e9abf093f39373327a29e9b3dde643b9daf7062f77c4ba
+  languageName: node
+  linkType: hard
+
+"tailwindcss@npm:^3.0.2, tailwindcss@npm:^3.4.0":
   version: 3.4.0
   resolution: "tailwindcss@npm:3.4.0"
   dependencies:
