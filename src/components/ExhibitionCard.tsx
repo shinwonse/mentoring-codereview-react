@@ -1,8 +1,30 @@
+import FilledStar from '@assets/icons/FilledStar';
 import Star from '@assets/icons/Star';
 import { Exhibition } from '@src/types';
 import { cn } from '@utils/cn';
+import {
+  deleteFavoriteExhibition,
+  getFavoriteExhibitionList,
+  saveFavoriteExhibition,
+} from '@utils/favorite';
+import { useState } from 'react';
 
 function ExhibitionCard({ exhibition }: { exhibition: Exhibition }) {
+  const favoriteExhibitionList = getFavoriteExhibitionList();
+
+  const [isFavorite, setIsFavorite] = useState(
+    favoriteExhibitionList?.includes(exhibition.id)
+  );
+
+  const toggleFavorite = () => {
+    if (isFavorite) {
+      deleteFavoriteExhibition(exhibition.id);
+    } else {
+      saveFavoriteExhibition(exhibition.id);
+    }
+    setIsFavorite(!isFavorite);
+  };
+
   return (
     <>
       <img
@@ -25,8 +47,8 @@ function ExhibitionCard({ exhibition }: { exhibition: Exhibition }) {
           >{`${exhibition.date.started} ~ ${exhibition.date.ended}`}</p>
         </div>
         <div className={cn('flex flex-col h-full items-end justify-between')}>
-          <button type="button">
-            <Star size={18} />
+          <button onClick={toggleFavorite} type="button">
+            {isFavorite ? <FilledStar size={18} /> : <Star size={18} />}
           </button>
           <button
             className={cn(
