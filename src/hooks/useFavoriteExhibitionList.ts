@@ -1,11 +1,14 @@
 import useExhibitionList from '@hooks/useExhibitionList';
-import { getApiExhibitionList } from '@src/apis';
+import { getFavoriteExhibitionList } from '@utils/favorite';
 
 const useFavoriteExhibitionList = () => {
   const { exhibitionList } = useExhibitionList();
-  const favoriteExhibitionIds = getApiExhibitionList();
+  const favoriteExhibitionIds = getFavoriteExhibitionList();
+  const favoriteExhibitionList = exhibitionList?.filter((item) =>
+    favoriteExhibitionIds.includes(item.id)
+  );
 
-  return { exhibitionList, favoriteExhibitionIds };
+  return { exhibitionList, favoriteExhibitionList };
 };
 
 export default useFavoriteExhibitionList;
