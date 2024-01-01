@@ -8,7 +8,7 @@ export function Home() {
   const tab = searchParams.get('tab') ?? 'list';
 
   return (
-    <Layout>
+    <Layout bottomNavigator>
       {tab === 'list' && <ExhibitionList />}
       {tab === 'favorite' && <FavoriteList />}
     </Layout>

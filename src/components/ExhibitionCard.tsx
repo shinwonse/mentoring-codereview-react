@@ -8,8 +8,10 @@ import {
   saveFavoriteExhibition,
 } from '@utils/favorite';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function ExhibitionCard({ exhibition }: { exhibition: Exhibition }) {
+  const navigate = useNavigate();
   const favoriteExhibitionList = getFavoriteExhibitionList();
 
   const [isFavorite, setIsFavorite] = useState(
@@ -24,6 +26,8 @@ function ExhibitionCard({ exhibition }: { exhibition: Exhibition }) {
     }
     setIsFavorite(!isFavorite);
   };
+
+  const handleClickReservation = () => navigate(`/exhibition/${exhibition.id}`);
 
   return (
     <>
@@ -54,6 +58,7 @@ function ExhibitionCard({ exhibition }: { exhibition: Exhibition }) {
             className={cn(
               'text-[8px] text-white py-1 px-1.5 bg-[#1a1a1a] rounded'
             )}
+            onClick={handleClickReservation}
             type="button"
           >
             예매하기
