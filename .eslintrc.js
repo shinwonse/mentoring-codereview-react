@@ -19,6 +19,7 @@ module.exports = {
   rules: {
     'import/prefer-default-export': 'off',
     'no-console': 'off',
+    'no-promise-executor-return': 'off',
     'no-param-reassign': ['error', { props: false }],
     'react/jsx-no-useless-fragment': ['error', { allowExpressions: true }],
     'react/jsx-props-no-spreading': 'off',
