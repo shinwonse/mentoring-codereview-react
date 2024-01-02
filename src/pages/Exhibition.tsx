@@ -1,12 +1,31 @@
+import FilledStar from '@assets/icons/FilledStar';
 import Star from '@assets/icons/Star';
 import Layout from '@components/Layout';
 import useExhibition from '@hooks/useExhibition';
+import useFavoriteExhibitionList from '@hooks/useFavoriteExhibitionList';
 import { cn } from '@utils/cn';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 function Exhibition() {
+  const { favoriteExhibitionList, updateFavoriteExhibitionIds } =
+    useFavoriteExhibitionList();
   const { id } = useParams<{ id: string }>();
   const { exhibition } = useExhibition(Number(id));
+
+  const [isFavorite, setIsFavorite] = useState(
+    exhibition instanceof Error
+      ? false
+      : favoriteExhibitionList?.some((favoriteExhibition) => {
+          return favoriteExhibition.id === exhibition?.id;
+        })
+  );
+
+  const toggleFavoriteExhibition = () => {
+    if (exhibition instanceof Error) return;
+    setIsFavorite((prev) => !prev);
+    updateFavoriteExhibitionIds(exhibition?.id as number);
+  };
 
   return (
     <Layout header title="예매하기">
@@ -33,8 +52,8 @@ function Exhibition() {
                   {exhibition?.date.started} ~ {exhibition?.date.ended}
                 </p>
               </div>
-              <button type="button">
-                <Star size={32} />
+              <button onClick={toggleFavoriteExhibition} type="button">
+                {isFavorite ? <FilledStar size={32} /> : <Star size={32} />}
               </button>
             </div>
             <button
