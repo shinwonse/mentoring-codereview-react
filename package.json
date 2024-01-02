@@ -8,6 +8,7 @@
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src"
   },
   "dependencies": {
+    "@radix-ui/react-dialog": "^1.0.5",
     "@tanstack/react-query": "^5.17.0",
     "clsx": "^2.1.0",
     "craco-alias": "^3.0.1",
