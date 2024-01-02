@@ -1,14 +1,38 @@
 import useExhibitionList from '@hooks/useExhibitionList';
-import { getFavoriteExhibitionList } from '@utils/favorite';
+import { useAtom } from 'jotai';
+import { atomWithStorage } from 'jotai/utils';
+
+const FAVORITE_EXHIBITION_LOCAL_STORAGE_KEY = 'favoriteExhibition';
+
+export const favoriteExhibitionIdsAtom = atomWithStorage<number[]>(
+  FAVORITE_EXHIBITION_LOCAL_STORAGE_KEY,
+  []
+);
 
 const useFavoriteExhibitionList = () => {
+  const [favoriteExhibitionIds, setFavoriteExhibitionIds] = useAtom(
+    favoriteExhibitionIdsAtom
+  );
   const { exhibitionList } = useExhibitionList();
-  const favoriteExhibitionIds = getFavoriteExhibitionList();
   const favoriteExhibitionList = exhibitionList?.filter((item) =>
     favoriteExhibitionIds.includes(item.id)
   );
 
-  return { exhibitionList, favoriteExhibitionList };
+  const updateFavoriteExhibitionIds = (id: number) => {
+    if (favoriteExhibitionIds.includes(id)) {
+      setFavoriteExhibitionIds(
+        favoriteExhibitionIds.filter((item) => item !== id)
+      );
+    } else {
+      setFavoriteExhibitionIds([...favoriteExhibitionIds, id]);
+    }
+  };
+
+  return {
+    exhibitionList,
+    favoriteExhibitionList,
+    updateFavoriteExhibitionIds,
+  };
 };
 
 export default useFavoriteExhibitionList;

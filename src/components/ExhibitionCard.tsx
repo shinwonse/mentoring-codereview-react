@@ -1,30 +1,25 @@
 import FilledStar from '@assets/icons/FilledStar';
 import Star from '@assets/icons/Star';
+import useFavoriteExhibitionList from '@hooks/useFavoriteExhibitionList';
 import { Exhibition } from '@src/types';
 import { cn } from '@utils/cn';
-import {
-  deleteFavoriteExhibition,
-  getFavoriteExhibitionList,
-  saveFavoriteExhibition,
-} from '@utils/favorite';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function ExhibitionCard({ exhibition }: { exhibition: Exhibition }) {
+  const { favoriteExhibitionList, updateFavoriteExhibitionIds } =
+    useFavoriteExhibitionList();
   const navigate = useNavigate();
-  const favoriteExhibitionList = getFavoriteExhibitionList();
 
   const [isFavorite, setIsFavorite] = useState(
-    favoriteExhibitionList?.includes(exhibition.id)
+    favoriteExhibitionList?.some((favoriteExhibition) => {
+      return favoriteExhibition.id === exhibition.id;
+    }) ?? false
   );
 
-  const toggleFavorite = () => {
-    if (isFavorite) {
-      deleteFavoriteExhibition(exhibition.id);
-    } else {
-      saveFavoriteExhibition(exhibition.id);
-    }
-    setIsFavorite(!isFavorite);
+  const toggleFavoriteExhibition = () => {
+    setIsFavorite((prev) => !prev);
+    updateFavoriteExhibitionIds(exhibition.id);
   };
 
   const handleClickReservation = () => navigate(`/exhibition/${exhibition.id}`);
@@ -51,7 +46,7 @@ function ExhibitionCard({ exhibition }: { exhibition: Exhibition }) {
           >{`${exhibition.date.started} ~ ${exhibition.date.ended}`}</p>
         </div>
         <div className={cn('flex flex-col h-full items-end justify-between')}>
-          <button onClick={toggleFavorite} type="button">
+          <button onClick={toggleFavoriteExhibition} type="button">
             {isFavorite ? <FilledStar size={18} /> : <Star size={18} />}
           </button>
           <button

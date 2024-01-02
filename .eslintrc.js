@@ -21,6 +21,7 @@ module.exports = {
     'no-console': 'off',
     'no-promise-executor-return': 'off',
     'no-param-reassign': ['error', { props: false }],
+    'react/no-unstable-nested-components': 'off',
     'react/jsx-no-useless-fragment': ['error', { allowExpressions: true }],
     'react/jsx-props-no-spreading': 'off',
     'react/jsx-sort-props': 'error',
