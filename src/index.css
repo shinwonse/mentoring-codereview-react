@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    position: absolute;
+    max-width: 390px;
+    left: 50%;
+    transform: translate(-50%);
+    height: 100vh;
+}

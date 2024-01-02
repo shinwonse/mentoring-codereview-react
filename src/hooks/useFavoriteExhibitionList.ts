@@ -13,7 +13,7 @@ const useFavoriteExhibitionList = () => {
   const [favoriteExhibitionIds, setFavoriteExhibitionIds] = useAtom(
     favoriteExhibitionIdsAtom
   );
-  const { exhibitionList } = useExhibitionList();
+  const { exhibitionList, isLoading } = useExhibitionList();
   const favoriteExhibitionList = exhibitionList?.filter((item) =>
     favoriteExhibitionIds.includes(item.id)
   );
@@ -31,6 +31,7 @@ const useFavoriteExhibitionList = () => {
   return {
     exhibitionList,
     favoriteExhibitionList,
+    isLoading,
     updateFavoriteExhibitionIds,
   };
 };

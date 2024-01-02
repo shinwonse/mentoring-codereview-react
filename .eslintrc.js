@@ -28,6 +28,7 @@ module.exports = {
     'react/no-danger': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/require-default-props': 'off',
+    'react/no-array-index-key': 'off',
     'simple-import-sort/exports': 'error',
     'simple-import-sort/imports': 'error',
     'sort-destructure-keys/sort-destructure-keys': 'error',
